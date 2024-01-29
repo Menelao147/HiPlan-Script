@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Imprevisti
 // @namespace    http://tampermonkey.net/
-// @version      0.2
+// @version      0.3
 // @description  HiPlan Imprevisti
 // @author       Menelao147
 // @match        https://hiplan.sidel.com/HiPlan/HiPlan/Imprevisti/Imprevisti.phtml
