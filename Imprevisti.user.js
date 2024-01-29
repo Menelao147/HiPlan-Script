@@ -7,8 +7,8 @@
 // @match        https://hiplan.sidel.com/HiPlan/HiPlan/Imprevisti/Imprevisti.phtml
 // @icon         https://hiplan.sidel.com/HiPlan/favicon.ico
 // @grant        none
-// @downloadURL  https://github.com/Menelao147/HiPlan-Script/blob/main/Imprevisti.user.js
-// @updateURL    https://github.com/Menelao147/HiPlan-Script/blob/main/Imprevisti.user.js
+// @downloadURL  https://github.com/Menelao147/HiPlan-Script/raw/main/Imprevisti.user.js
+// @updateURL    https://github.com/Menelao147/HiPlan-Script/raw/main/Imprevisti.user.js
 // ==/UserScript==
 
 (function() {
