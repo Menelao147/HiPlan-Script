@@ -12,7 +12,6 @@
 // ==/UserScript==
 
 (function() {
-    'use strict';
     var i
 
     let DataInput = document.getElementsByName('Dadatalav');
