@@ -2,6 +2,7 @@
 // @name         Imprevisti
 // @namespace    http://tampermonkey.net/
 // @version      0.1
+// @description  HiPlan Imprevisti
 // @author       Menelao147
 // @match        https://hiplan.sidel.com/HiPlan/HiPlan/Imprevisti/Imprevisti.phtml
 // @icon         https://hiplan.sidel.com/HiPlan/favicon.ico
