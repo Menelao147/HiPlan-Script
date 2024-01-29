@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Avanzamento
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.2
 // @description  HiPlan Avanzamento
 // @author       Menelao147
 // @match        https://hiplan.sidel.com/HiPlan/HiPlan/avanzamento.phtml*
@@ -21,7 +21,7 @@ window.addEventListener('load', function() {
 
     if (parseInt(Data[0]) < MaxDay) {
         Data[0] = parseInt(Data[0]) + 1
-        if (Data[0].length = 1){
+        if (parseInt(Data[0]) < 10){
             Data[0] = "0" + Data[0]
         }
         DataAv[0].value = Data[0] + "/" + Data[1] + "/" + Data[2];
@@ -39,7 +39,7 @@ window.addEventListener('input', function saveDate() {
     if (Data[0].length > 1 && Data.length == 3) {
         GM_setValue("DataAvanzamento", DataAv[0].value);
     }
-    else if (Data[0].length = 1 && Data.length == 3) {
+    else if (parseInt(Data[0]) < 10 && Data.length == 3) {
         GM_setValue("DataAvanzamento", "0" + Data[0] + "/" + Data[1] + "/" + Data[2]);
     }
 }, false);
