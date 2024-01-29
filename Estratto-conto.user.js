@@ -1,7 +1,7 @@
-14// ==UserScript==
+// ==UserScript==
 // @name         Estratto conto
 // @namespace    http://tampermonkey.net/
-// @version      0.2
+// @version      0.3
 // @description  HiPlan Estratto conto
 // @author       Menelao147
 // @match        https://hiplan.sidel.com/HiPlan/HiPlan/OreFatte.phtml
@@ -12,8 +12,6 @@
 // ==/UserScript==
 
 (function() {
-    'use strict';
-
     let DataInizio = document.getElementsByName('DaData');
     let DataFine = document.getElementsByName('AData');
     let MaxDay = new Date().getDaysInMonth();
