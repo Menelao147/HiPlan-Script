@@ -27,7 +27,7 @@
         else if (ImprevistiList[0].children[i].text == "Seleziona") {
             i++;
         }
-        else if (ImprevistiList[0].children[i].text.includes("12320")) {
+        else if (ImprevistiList[0].children[i].text.includes("123")) {
             i++;
         }
         else if (ImprevistiList[0].children[i].text.includes("FLFIELD")) {
