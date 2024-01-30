@@ -35,13 +35,16 @@
         else if (ImprevistiList[0].children[i].text.includes("FLSERVICE")) {
             i++;
         }
+        else if (ImprevistiList[0].children[i].text.includes("COLLAUDO")) {
+            i++;
+        }
         else {
             ImprevistiList[0].removeChild(ImprevistiList[0].children[i]);
         }
     }
 
     for (i = 0; i < ImprevistiOre[0].childElementCount;) {
-        if (Number(ImprevistiOre[0].children[i].text) < 14) {
+        if (Number(ImprevistiOre[0].children[i].text) < 15) {
             i++;
         }
         else {
