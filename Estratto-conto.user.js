@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Estratto conto
 // @namespace    http://tampermonkey.net/
-// @version      0.4
+// @version      0.5
 // @description  HiPlan Estratto conto
 // @author       Menelao147
 // @match        https://hiplan.sidel.com/HiPlan/HiPlan/OreFatte.phtml
@@ -12,7 +12,7 @@
 // ==/UserScript==
 
 (function() {
-    const ResultTable = document.getElementById('main_table_id');
+    let ResultTable = document.getElementById('main_table_id');
     let DataInizio = document.getElementsByName('DaData');
     let DataFine = document.getElementsByName('AData');
     let MaxDay = new Date().getDaysInMonth();
@@ -33,6 +33,15 @@
     DataFine[0].setAttribute('value', MaxDay + "/" + MonthSt + YearSt);
 
     if (ResultTable !== null) {
+        let Table = ResultTable.querySelector("table")
+        for (var i = 0, row; row = Table.rows[i]; i++) {
+            if (row.className == "due"  ) {
+                let OreInserite = row.outerText.split(":")
+                if (parseInt(OreInserite[0]) < 8) {
+                    row.style.backgroundColor = "Red"
+                }
+            }
+        }
     }
     else{
         Controlla();
