@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Estratto conto
 // @namespace    http://tampermonkey.net/
-// @version      0.5
+// @version      0.6
 // @description  HiPlan Estratto conto
 // @author       Menelao147
 // @match        https://hiplan.sidel.com/HiPlan/HiPlan/OreFatte.phtml
@@ -35,7 +35,7 @@
     if (ResultTable !== null) {
         let Table = ResultTable.querySelector("table")
         for (var i = 0, row; row = Table.rows[i]; i++) {
-            if (row.className == "due"  ) {
+            if (row.className == "due") {
                 let OreInserite = row.outerText.split(":")
                 if (parseInt(OreInserite[0]) < 8) {
                     row.style.backgroundColor = "Red"
@@ -43,7 +43,11 @@
             }
         }
     }
-    else{
-        Controlla();
+    else {
+        if (document.body.textContent.includes('Nessun dato corrisponde ai criteri di ricerca')){
+        }
+        else {
+            Controlla();
+        };
     }
 })();
