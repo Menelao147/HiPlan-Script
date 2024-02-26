@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Avanzamento
 // @namespace    http://tampermonkey.net/
-// @version      0.3
+// @version      0.4
 // @description  HiPlan Avanzamento
 // @author       Menelao147
 // @match        https://hiplan.sidel.com/HiPlan/HiPlan/avanzamento.phtml*
@@ -26,13 +26,16 @@ window.addEventListener('load', function() {
     for (i = 0; i < DropOre[0].childElementCount;) {
         if (DropOre[0].children[i].value < 15) {
             i++;
+            if (DropOre[0].children[i].value == 8) {
+                DropOre[0].children[i].selected = true
+            };
         }
         else {
             DropOre[0].removeChild(DropOre[0].children[i]);
         }
     }
 
-     for (i = 0; i < DropMin[0].childElementCount;) {
+    for (i = 0; i < DropMin[0].childElementCount;) {
         if (DropMin[0].children[i].value == 0) {
             i++;
         }
