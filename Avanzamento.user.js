@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Avanzamento
 // @namespace    http://tampermonkey.net/
-// @version      0.4
+// @version      0.5
 // @description  HiPlan Avanzamento
 // @author       Menelao147
 // @match        https://hiplan.sidel.com/HiPlan/HiPlan/avanzamento.phtml*
@@ -22,6 +22,7 @@ window.addEventListener('load', function() {
     let DropOre = document.getElementsByName('numore');
     let DropMin = document.getElementsByName('nummin');
     var Data = GM_getValue("DataAvanzamento").split("/");
+    var GiornoSettimana = new Date(Data[2] + "/" + Data[1] + "/" + Data[0]).getDay();
 
     for (i = 0; i < DropOre[0].childElementCount;) {
         if (DropOre[0].children[i].value < 15) {
@@ -47,7 +48,28 @@ window.addEventListener('load', function() {
         }
     }
 
-    if (parseInt(Data[0]) < MaxDay) {
+    if (GiornoSettimana == 0 && (parseInt(Data[0]) + 1) <= MaxDay){
+        Data[0] = parseInt(Data[0]) + 1
+        if (parseInt(Data[0]) < 10){
+            Data[0] = "0" + Data[0]
+        }
+        DataAv[0].value = Data[0] + "/" + Data[1] + "/" + Data[2];
+        GM_setValue("DataAvanzamento", DataAv[0].value);
+    } else if (GiornoSettimana == 5 && (parseInt(Data[0]) + 3) <= MaxDay){
+        Data[0] = parseInt(Data[0]) + 3
+        if (parseInt(Data[0]) < 10){
+            Data[0] = "0" + Data[0]
+        }
+        DataAv[0].value = Data[0] + "/" + Data[1] + "/" + Data[2];
+        GM_setValue("DataAvanzamento", DataAv[0].value);
+    } else if (GiornoSettimana == 6 && (parseInt(Data[0]) + 2) <= MaxDay){
+        Data[0] = parseInt(Data[0]) + 2
+        if (parseInt(Data[0]) < 10){
+            Data[0] = "0" + Data[0]
+        }
+        DataAv[0].value = Data[0] + "/" + Data[1] + "/" + Data[2];
+        GM_setValue("DataAvanzamento", DataAv[0].value);
+    } else if ((parseInt(Data[0]) + 1) <= MaxDay){
         Data[0] = parseInt(Data[0]) + 1
         if (parseInt(Data[0]) < 10){
             Data[0] = "0" + Data[0]
