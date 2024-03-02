@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Avanzamento
 // @namespace    http://tampermonkey.net/
-// @version      0.6
+// @version      0.7
 // @description  HiPlan Avanzamento
 // @author       Menelao147
 // @match        https://hiplan.sidel.com/HiPlan/HiPlan/avanzamento.phtml*
@@ -15,14 +15,16 @@
 
 window.addEventListener('load', function() {
     window.resizeTo(900, 900);
-    var i;
+    let i;
 
     let DataAv = document.getElementsByName('Dadatlav')
     let DropOre = document.getElementsByName('numore');
     let DropMin = document.getElementsByName('nummin');
-    var Data = GM_getValue("DataAvanzamento").split("/");
+    let Data = GM_getValue("DataAvanzamento").split("/");
+    let MeseAttuale = new Date().getMonth()
     let MaxDay = new Date(Data[2] + "/" + Data[1] + "/" + Data[0]).getDaysInMonth();
-    var GiornoSettimana = new Date(Data[2] + "/" + Data[1] + "/" + Data[0]).getDay();
+    let GiornoSettimana = new Date(Data[2] + "/" + Data[1] + "/" + Data[0]).getDay();
+    let MeseSalvato = new Date(Data[2] + "/" + Data[1] + "/" + Data[0]).getMonth()
 
     for (i = 0; i < DropOre[0].childElementCount;) {
         if (DropOre[0].children[i].value < 15) {
@@ -76,6 +78,14 @@ window.addEventListener('load', function() {
         }
         DataAv[0].value = Data[0] + "/" + Data[1] + "/" + Data[2];
         GM_setValue("DataAvanzamento", DataAv[0].value);
+    } else if (MeseSalvato != MeseAttuale && (parseInt(Data[1]) + 1) <= 11) {
+        Data[0] = "01"
+        Data[1] = parseInt(Data[1]) + 1
+        if (parseInt(Data[1]) < 10){
+            Data[1] = "0" + Data[1]
+        }
+        DataAv[0].value = Data[0] + "/" + Data[1] + "/" + Data[2];
+        GM_setValue("DataAvanzamento", DataAv[0].value);
     } else {
         Data[0] = parseInt(Data[0])
         DataAv[0].value = Data[0] + "/" + Data[1] + "/" + Data[2];
@@ -85,7 +95,7 @@ window.addEventListener('load', function() {
 
 window.addEventListener('input', function saveDate() {
     let DataAv = document.getElementsByName('Dadatlav')
-    var Data = DataAv[0].value.split("/");
+    let Data = DataAv[0].value.split("/");
     if (Data[0].length > 1 && Data.length == 3) {
         GM_setValue("DataAvanzamento", DataAv[0].value);
     }
