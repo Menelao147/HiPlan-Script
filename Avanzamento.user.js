@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Avanzamento
 // @namespace    http://tampermonkey.net/
-// @version      0.5
+// @version      0.6
 // @description  HiPlan Avanzamento
 // @author       Menelao147
 // @match        https://hiplan.sidel.com/HiPlan/HiPlan/avanzamento.phtml*
@@ -18,10 +18,10 @@ window.addEventListener('load', function() {
     var i;
 
     let DataAv = document.getElementsByName('Dadatlav')
-    let MaxDay = new Date().getDaysInMonth();
     let DropOre = document.getElementsByName('numore');
     let DropMin = document.getElementsByName('nummin');
     var Data = GM_getValue("DataAvanzamento").split("/");
+    let MaxDay = new Date(Data[2] + "/" + Data[1] + "/" + Data[0]).getDaysInMonth();
     var GiornoSettimana = new Date(Data[2] + "/" + Data[1] + "/" + Data[0]).getDay();
 
     for (i = 0; i < DropOre[0].childElementCount;) {
