@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Avanzamento
 // @namespace    http://tampermonkey.net/
-// @version      0.7
+// @version      0.8
 // @description  HiPlan Avanzamento
 // @author       Menelao147
 // @match        https://hiplan.sidel.com/HiPlan/HiPlan/avanzamento.phtml*
@@ -15,6 +15,7 @@
 
 window.addEventListener('load', function() {
     window.resizeTo(900, 900);
+    window.moveTo(GM_getValue("WindowsPosX"), GM_getValue("WindowsPosY"));
     let i;
 
     let DataAv = document.getElementsByName('Dadatlav')
@@ -103,3 +104,8 @@ window.addEventListener('input', function saveDate() {
         GM_setValue("DataAvanzamento", "0" + Data[0] + "/" + Data[1] + "/" + Data[2]);
     }
 }, false);
+
+window.addEventListener('beforeunload', () => {
+  GM_setValue("WindowsPosX", window.screenX);
+  GM_setValue("WindowsPosY", window.screenY);
+});
