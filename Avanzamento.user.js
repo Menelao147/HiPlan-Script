@@ -1,14 +1,14 @@
 // ==UserScript==
 // @name         Avanzamento
 // @namespace    http://tampermonkey.net/
-// @version      0.8
+// @version      0.9
 // @description  HiPlan Avanzamento
 // @author       Menelao147
 // @match        https://hiplan.sidel.com/HiPlan/HiPlan/avanzamento.phtml*
 // @icon         https://hiplan.sidel.com/HiPlan/favicon.ico
 // @grant        GM_setValue
 // @grant        GM_getValue
-// @require      https://openuserjs.org/src/libs/sizzle/GM_config.js
+// @require      https://github.com/Menelao147/HiPlan-Script/raw/main/GM_config.js
 // @downloadURL  https://github.com/Menelao147/HiPlan-Script/raw/main/Avanzamento.user.js
 // @updateURL    https://github.com/Menelao147/HiPlan-Script/raw/main/Avanzamento.user.js
 // ==/UserScript==
