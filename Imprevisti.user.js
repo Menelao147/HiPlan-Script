@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Imprevisti
 // @namespace    http://tampermonkey.net/
-// @version      0.5
+// @version      0.6
 // @description  HiPlan Imprevisti
 // @author       Menelao147
 // @match        https://hiplan.sidel.com/HiPlan/HiPlan/Imprevisti/Imprevisti.phtml
@@ -21,6 +21,9 @@
 
     for (i = 0; i < ImprevistiList[0].childElementCount;) {
         if (ImprevistiList[0].children[i].text == "Assenza") {
+            i++;
+        }
+        else if (ImprevistiList[0].children[i].text == "Assenza/Days Off") {
             i++;
         }
         else if (ImprevistiList[0].children[i].text == "Seleziona") {
