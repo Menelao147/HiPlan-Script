@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Estratto conto
 // @namespace    http://tampermonkey.net/
-// @version      0.6
+// @version      0.7
 // @description  HiPlan Estratto conto
 // @author       Menelao147
 // @match        https://hiplan.sidel.com/HiPlan/HiPlan/OreFatte.phtml
@@ -45,6 +45,8 @@
     }
     else {
         if (document.body.textContent.includes('Nessun dato corrisponde ai criteri di ricerca')){
+        }
+        else if (document.body.textContent.includes('No data matches the search criteria')){
         }
         else {
             Controlla();
