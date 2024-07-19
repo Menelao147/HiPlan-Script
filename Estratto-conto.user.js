@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Estratto conto
 // @namespace    http://tampermonkey.net/
-// @version      0.7
+// @version      0.6
 // @description  HiPlan Estratto conto
 // @author       Menelao147
 // @match        https://hiplan.sidel.com/HiPlan/HiPlan/OreFatte.phtml
@@ -16,7 +16,9 @@
     let DataInizio = document.getElementsByName('DaData');
     let DataFine = document.getElementsByName('AData');
     let MaxDay = new Date().getDaysInMonth();
+    let NewDayRange = "20";
     let Month = new Date().getMonth() + 1;
+    let LastMonthSt ="";
     let MonthSt = "";
 
     if (Month < 10) {
@@ -25,11 +27,17 @@
     else {
         MonthSt = Month.toString() + "/";
     }
+     if (Month < 11) {
+         LastMonthSt = "0" + (Month - 1).toString() + "/";
+        }
+    else {
+        MonthSt = (Month - 1).toString() + "/";
+    }
     let Year = new Date().getFullYear();
     let YearSt = Year.toString();
 
     DataInizio[0];
-    DataInizio[0].setAttribute('value', "01/" + MonthSt + YearSt);
+    DataInizio[0].setAttribute('value', NewDayRange + "/" + LastMonthSt + YearSt);
     DataFine[0].setAttribute('value', MaxDay + "/" + MonthSt + YearSt);
 
     if (ResultTable !== null) {
