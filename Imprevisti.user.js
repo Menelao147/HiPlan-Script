@@ -1,12 +1,13 @@
 // ==UserScript==
 // @name         Imprevisti
 // @namespace    http://tampermonkey.net/
-// @version      0.6
+// @version      0.7
 // @description  HiPlan Imprevisti
 // @author       Menelao147
-// @match        https://hiplan.sidel.com/HiPlan/HiPlan/Imprevisti/Imprevisti.phtml
+// @match        */HiPlan/HiPlan/Imprevisti/Imprevisti.phtml*
 // @icon         https://hiplan.sidel.com/HiPlan/favicon.ico
 // @grant        none
+// @require      https://github.com/Menelao147/HiPlan-Script/raw/main/moment.js
 // @downloadURL  https://github.com/Menelao147/HiPlan-Script/raw/main/Imprevisti.user.js
 // @updateURL    https://github.com/Menelao147/HiPlan-Script/raw/main/Imprevisti.user.js
 // ==/UserScript==
@@ -14,7 +15,8 @@
 (function() {
     var i
 
-    let DataInput = document.getElementsByName('Dadatlav');
+    let DataInputDa = document.getElementsByName('Dadatlav');
+    let DataInputA = document.getElementsByName('Adatlav');
     let ImprevistiList = document.getElementsByName('idriga');
     let ImprevistiOre = document.getElementsByName('numore');
     let ImprevistiMinuti = document.getElementsByName('nummin');
@@ -68,3 +70,15 @@
     }
 })
 ();
+
+window.addEventListener('input', function copiaData() {
+    var i
+    let DataInputDa = document.getElementsByName('Dadatlav');
+    let DataInputA = document.getElementsByName('Adatlav');
+
+    if (event.target.name == 'Dadatlav') {
+        if (moment(DataInputDa[0].value, "DD/MM/YYYY", true).isValid()) {
+            DataInputA[0].value = DataInputDa[0].value;
+        }
+    }
+}, false);
