@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         Estratto conto
 // @namespace    http://tampermonkey.net/
-// @version      0.6
+// @version      0.7
 // @description  HiPlan Estratto conto
 // @author       Menelao147
-// @match        https://hiplan.sidel.com/HiPlan/HiPlan/OreFatte.phtml
+// @match        */HiPlan/HiPlan/OreFatte.phtml*
 // @icon         https://hiplan.sidel.com/HiPlan/favicon.ico
 // @grant        none
 // @downloadURL  https://github.com/Menelao147/HiPlan-Script/raw/main/Estratto-conto.user.js
