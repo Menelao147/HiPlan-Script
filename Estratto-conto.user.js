@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Estratto conto
 // @namespace    http://tampermonkey.net/
-// @version      0.7
+// @version      0.8
 // @description  HiPlan Estratto conto
 // @author       Menelao147
 // @match        */HiPlan/HiPlan/OreFatte.phtml*
@@ -27,11 +27,11 @@
     else {
         MonthSt = Month.toString() + "/";
     }
-     if (Month < 11) {
-         LastMonthSt = "0" + (Month - 1).toString() + "/";
-        }
+    if (Month < 10) {
+        LastMonthSt = "0" + (Month - 1).toString() + "/";
+       }
     else {
-        MonthSt = (Month - 1).toString() + "/";
+        LastMonthSt = (Month - 1).toString() + "/";
     }
     let Year = new Date().getFullYear();
     let YearSt = Year.toString();
