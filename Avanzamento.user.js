@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Avanzamento
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.1
 // @description  HiPlan Avanzamento
 // @author       Menelao147
 // @match        */HiPlan/HiPlan/*vanzamento.phtml*
@@ -18,39 +18,47 @@ window.addEventListener('load', function() {
     window.resizeTo(900, 900);
     window.moveTo(GM_getValue("WindowsPosX"), GM_getValue("WindowsPosY"));
     let i;
+    let j;
 
     let DataInputDa = document.getElementsByName('Dadatlav');
     let DataInputA = document.getElementsByName('Adatlav');
-    let DropOre = document.getElementsByName('numore');
-    let DropMin = document.getElementsByName('nummin');
+    let DropOre = document.querySelectorAll('select[name^=numore]')
+    let DropMin = document.querySelectorAll('select[name^=nummin]')
     let Data = GM_getValue("DataAvanzamento", Date()).split("/");
     let MeseAttuale = new Date().getMonth()
     let MaxDay = new Date(Data[2] + "/" + Data[1] + "/" + Data[0]).getDaysInMonth();
     let GiornoSettimana = new Date(Data[2] + "/" + Data[1] + "/" + Data[0]).getDay();
     let MeseSalvato = new Date(Data[2] + "/" + Data[1] + "/" + Data[0]).getMonth()
 
-    for (i = 0; i < DropOre[0].childElementCount;) {
-        if (DropOre[0].children[i].value < 15) {
-            i++;
-            if (DropOre[0].children[i].value == 8) {
-                DropOre[0].children[i].selected = true
-            };
+    for (j = 0; j < DropOre.length;) {
+        for (i = 0; i < DropOre[j].childElementCount;) {
+            if (DropOre[j].children[i].value < 15) {
+                i++;
+                if (DropOre[j].children[i].value == 8) {
+                    DropOre[j].children[i].selected = true
+                };
+            }
+            else {
+                DropOre[j].removeChild(DropOre[j].children[i]);
+            }
         }
-        else {
-            DropOre[0].removeChild(DropOre[0].children[i]);
-        }
+        j++;
     }
 
-    for (i = 0; i < DropMin[0].childElementCount;) {
-        if (DropMin[0].children[i].value == 0) {
-            i++;
+
+    for (j = 0; j < DropMin.length;) {
+        for (i = 0; i < DropMin[j].childElementCount;) {
+            if (DropMin[j].children[i].value == 0) {
+                i++;
+            }
+            else if (DropMin[j].children[i].value == 30) {
+                i++;
+            }
+            else {
+                DropMin[j].removeChild(DropMin[j].children[i]);
+            }
         }
-         else if (DropMin[0].children[i].value == 30) {
-            i++;
-        }
-        else {
-            DropMin[0].removeChild(DropMin[0].children[i]);
-        }
+        j++;
     }
 
     if (GiornoSettimana == 0 && (parseInt(Data[0]) + 1) <= MaxDay){
