@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Imprevisti
 // @namespace    http://tampermonkey.net/
-// @version      0.7
+// @version      0.8
 // @description  HiPlan Imprevisti
 // @author       Menelao147
 // @match        */HiPlan/HiPlan/Imprevisti/Imprevisti.phtml*
@@ -17,7 +17,7 @@
 
     let DataInputDa = document.getElementsByName('Dadatlav');
     let DataInputA = document.getElementsByName('Adatlav');
-    let ImprevistiList = document.getElementsByName('idriga');
+    let ImprevistiList = document.getElementsByName('idriga_0');
     let ImprevistiOre = document.getElementsByName('numore');
     let ImprevistiMinuti = document.getElementsByName('nummin');
 
