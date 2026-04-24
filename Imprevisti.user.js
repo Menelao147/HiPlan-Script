@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Imprevisti
 // @namespace    http://tampermonkey.net/
-// @version      0.8
+// @version      0.9
 // @description  HiPlan Imprevisti
 // @author       Menelao147
 // @match        */HiPlan/HiPlan/Imprevisti/Imprevisti.phtml*
@@ -18,8 +18,8 @@
     let DataInputDa = document.getElementsByName('Dadatlav');
     let DataInputA = document.getElementsByName('Adatlav');
     let ImprevistiList = document.getElementsByName('idriga_0');
-    let ImprevistiOre = document.getElementsByName('numore');
-    let ImprevistiMinuti = document.getElementsByName('nummin');
+    let ImprevistiOre = document.getElementsByName('numore0');
+    let ImprevistiMinuti = document.getElementsByName('nummin0');
 
     for (i = 0; i < ImprevistiList[0].childElementCount;) {
         if (ImprevistiList[0].children[i].text == "Assenza") {
