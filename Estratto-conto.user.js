@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Estratto conto
 // @namespace    http://tampermonkey.net/
-// @version      0.8
+// @version      0.9
 // @description  HiPlan Estratto conto
 // @author       Menelao147
 // @match        */HiPlan/HiPlan/OreFatte.phtml*
@@ -12,6 +12,7 @@
 // ==/UserScript==
 
 (function() {
+    let frame = document.querySelector('iframe[src="OreFatte.phtml"]');
     let ResultTable = document.getElementById('main_table_id');
     let DataInizio = document.getElementsByName('DaData');
     let DataFine = document.getElementsByName('AData');
@@ -60,4 +61,27 @@
             Controlla();
         };
     }
+
+    const btn = document.createElement('button');
+    btn.textContent = 'Controlla';
+
+    btn.style.position = 'fixed';
+    btn.style.bottom = '20px';
+    btn.style.right = '20px';
+    btn.style.zIndex = '9999';
+    btn.style.padding = '10px 18px';
+    btn.style.background = '#007bff';
+    btn.style.color = '#fff';
+    btn.style.border = 'none';
+    btn.style.borderRadius = '8px';
+    btn.style.cursor = 'pointer';
+    btn.style.boxShadow = '0 2px 6px rgba(0,0,0,0.3)';
+
+    btn.addEventListener('click', function () {
+        if (typeof window.Controlla === 'function') {
+            Controlla();
+        }
+    });
+
+    document.body.appendChild(btn);
 })();
